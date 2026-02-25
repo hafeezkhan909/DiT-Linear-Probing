@@ -230,7 +230,26 @@ class DiT(nn.Module):
         imgs = x.reshape(shape=(x.shape[0], c, h * p, h * p))
         return imgs
 
-    def forward(self, x, t, y):
+    def forward(self, x, t, y, ret_activation=False):
+        if not ret_activation:
+            return self.forward_core(x, t, y)
+
+        activation = {}
+        def namedHook(name):
+            def hook(module, input, output):
+                activation[name] = output
+            return hook
+        hooks = {}
+        for idx, block in enumerate(self.blocks):
+            name = f"layer-{idx}"
+            hooks[name] = block.register_forward_hook(namedHook(name))
+
+        result = self.forward_core(x, t, y)
+        for name in hooks:
+            hooks[name].remove()
+        return result, activation
+
+    def forward_core(self, x, t, y):
         """
         Forward pass of DiT.
         x: (N, C, H, W) tensor of spatial inputs (images or latent representations of images)

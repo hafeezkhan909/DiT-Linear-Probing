@@ -28,4 +28,4 @@ torchrun --nproc_per_node=8 linear_ddae_style.py \
   --use_amp
 ```
 
-Note: Added two linear probing pipelines to the original DiT repo: **`linear_mae_style.py`** (with MAE’s `util/` folder) and **`linear_ddae_style.py`** (with `utils.py`, `download.py`, and `datasets.py`).
+Note: Added two linear probing pipelines to the original DiT repo: **`linear_mae_style.py`** (with MAE’s `util/` folder) and **`linear_ddae_style.py`** (with `utils.py`, `download.py`, and `datasets.py`). Updated `models.py`, following [DDAE](https://github.com/FutureXiang/ddae), to extract features from different DiT layers.

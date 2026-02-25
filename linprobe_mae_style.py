@@ -113,8 +113,8 @@ def get_args_parser():
 
 def get_model(device):
     model = DiT_L_2().to(device)
-    state_dict = find_model(f"DiT-L-2.pt")
-    # state_dict = torch.load("../DiT/results/DiT-L-2/checkpoints/0525000.pt", map_location="cpu")
+    state_dict = find_model(f"DiT-XL-2-256x256.pt")
+    # state_dict = torch.load("./DiT-XL-2-256x256.pt", map_location="cpu")
     model.load_state_dict(state_dict)
     model.eval()
     diffusion = create_diffusion(None) # 1000-len betas

@@ -18,7 +18,7 @@ torchrun --nproc_per_node=8 linear_mae_style.py \
 This command freezes the DiT backbone and trains a linear classifier on ImageNet-1k using features extracted from the specified transformer block (`--blockname`) at the chosen diffusion timestep (`--timestep`).
 
 
-### Linear Probing (DDAE-style) — CLI
+### Linear Probing (DDAE-style)
 
 To run DDAE-style linear probing on a pretrained **DiT-XL/2** using distributed training (8 GPUs):
 

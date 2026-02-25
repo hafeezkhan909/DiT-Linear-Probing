@@ -1,6 +1,6 @@
 ### DiT Linear Probing (MAE-style)
 
-To run MAE-style linear probing on a pretrained **DiT-XL-2-256x256** using 8 GPUs:
+To run MAE-style linear probing on a pretrained **DiT-XL-2-256x256.pt** using 8 GPUs:
 
 ```bash
 torchrun --nproc_per_node=8 linear_mae_style.py \
